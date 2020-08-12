@@ -6,7 +6,7 @@ public abstract class BaseAction implements UserAction {
 
     private final String name;
 
-    public abstract void execute(Input input, ITracker tracker);
+    public abstract void execute(Input input, Store tracker);
 
     protected BaseAction(final int key, final String name) {
         this.key = key;

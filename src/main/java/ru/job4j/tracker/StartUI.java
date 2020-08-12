@@ -13,11 +13,11 @@ public class StartUI {
 
     private final Input input;
 
-    private final ITracker tracker;
+    private final Store tracker;
 
     private final Consumer<String> output;
 
-    public StartUI(Input input, ITracker tracker, Consumer<String> output) {
+    public StartUI(Input input, Store tracker, Consumer<String> output) {
         this.input = input;
         this.tracker = tracker;
         this.output = output;
@@ -37,6 +37,6 @@ public class StartUI {
     }
 
     public static void main(String[] args) {
-        new StartUI(new ValidateInput(new ConsoleInput()), new Tracker(), System.out::println).init();
+        new StartUI(new ValidateInput(new ConsoleInput()), new SqlTracker(), System.out::println).init();
     }
 }

@@ -10,11 +10,16 @@ import java.util.stream.Collectors;
  * @version $Id$
  * @since 0.1
  */
-public class Tracker implements ITracker {
+public class MemTracker implements Store {
     /**
      * Массив для хранение заявок.
      */
     private final List<Item> items = new ArrayList<>();
+
+    @Override
+    public void init() {
+
+    }
 
     /**
      * Метод реализаущий добавление заявки в хранилище
@@ -113,6 +118,11 @@ public class Tracker implements ITracker {
             }
         }
         return result;
+    }
+
+    @Override
+    public void close() throws Exception {
+
     }
 }
 

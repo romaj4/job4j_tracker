@@ -18,7 +18,7 @@ public class TrackerSingleStaticFinalField {
         return INSTANCE;
     }
 
-    Tracker tracker = new Tracker();
+    MemTracker tracker = new MemTracker();
 
     public Item add(Item item) {
         return this.tracker.add(item);

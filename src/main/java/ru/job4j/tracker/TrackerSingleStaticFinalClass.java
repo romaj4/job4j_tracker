@@ -20,7 +20,7 @@ public class TrackerSingleStaticFinalClass {
         private static final TrackerSingleStaticFinalClass INSTANCE = new TrackerSingleStaticFinalClass();
     }
 
-    Tracker tracker = new Tracker();
+    MemTracker tracker = new MemTracker();
 
     public Item add(Item item) {
         return this.tracker.add(item);

@@ -36,7 +36,7 @@ public class StartUITest {
 
     @Test
     public void whenUserAddItemThenTrackerHasNewItemWithSameName() {
-        Tracker tracker = new Tracker();
+        MemTracker tracker = new MemTracker();
         Input input = new StubInput(new String[]{"0", "test name", "desc", "6"});
         new StartUI(input, tracker, output).init();
         assertThat(tracker.findAll().get(0).getName(), is("test name"));
@@ -44,7 +44,7 @@ public class StartUITest {
 
     @Test
     public void whenUpdateThenTrackerHasUpdatedValue() {
-        Tracker tracker = new Tracker();
+        MemTracker tracker = new MemTracker();
         Item item = tracker.add(new Item("test name", "desc"));
         Input input = new StubInput(new String[]{"2", item.getId(), "test replace", "заменили заявку", "6"});
         new StartUI(input, tracker, output).init();
@@ -53,7 +53,7 @@ public class StartUITest {
 
     @Test
     public void whenDeleteItemThenTrackerHasLessValues() {
-        Tracker tracker = new Tracker();
+        MemTracker tracker = new MemTracker();
         Item item1 = tracker.add(new Item("test1", "desc1"));
         Item item2 = tracker.add(new Item("test2", "desc2"));
         Input input = new StubInput(new String[]{"3", item1.getId(), "6"});
@@ -78,7 +78,7 @@ public class StartUITest {
 
     @Test
     public void whenShowAllItem() {
-        Tracker tracker = new Tracker();
+        MemTracker tracker = new MemTracker();
         Item item1 = tracker.add(new Item("test1", "desc1"));
         Item item2 = tracker.add(new Item("test2", "desc2"));
         Input input = new StubInput(new String[]{"1", "6"});
@@ -96,7 +96,7 @@ public class StartUITest {
 
     @Test
     public void whenFindByID() {
-        Tracker tracker = new Tracker();
+        MemTracker tracker = new MemTracker();
         Item item1 = tracker.add(new Item("test1", "desc1"));
         Item item2 = tracker.add(new Item("test2", "desc2"));
         Input input = new StubInput(new String[]{"4", item2.getId(), "6"});
@@ -113,7 +113,7 @@ public class StartUITest {
 
     @Test
     public void whenFindByName() {
-        Tracker tracker = new Tracker();
+        MemTracker tracker = new MemTracker();
         Item item1 = tracker.add(new Item("test1", "desc1"));
         Item item2 = tracker.add(new Item("test2", "desc2"));
         Input input = new StubInput(new String[]{"5", item1.getName(), "6"});
@@ -130,14 +130,14 @@ public class StartUITest {
 
     @Test(expected = MenuOutException.class)
     public void whenMenuOutException() {
-        Tracker tracker = new Tracker();
+        MemTracker tracker = new MemTracker();
         Input input = new StubInput(new String[]{"28"});
         new StartUI(input, tracker, output).init();
     }
 
     @Test(expected = NumberFormatException.class)
     public void whenNumberFormatException() {
-        Tracker tracker = new Tracker();
+        MemTracker tracker = new MemTracker();
         Input input = new StubInput(new String[]{"java"});
         new StartUI(input, tracker, output).init();
     }

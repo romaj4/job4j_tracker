@@ -14,7 +14,7 @@ public class TrackerTest {
 
     @Test
     public void whenAddNewItemThenTrackerHasSameItem() {
-        Tracker tracker = new Tracker();
+        MemTracker tracker = new MemTracker();
         Item item = new Item("test1", "testDescription1");
         tracker.add(item);
         assertThat(tracker.findAll().get(0), is(item));
@@ -22,7 +22,7 @@ public class TrackerTest {
 
     @Test
     public void whenReplaceNameThenReturnNewName() {
-        Tracker tracker = new Tracker();
+        MemTracker tracker = new MemTracker();
         Item previous = new Item("test1", "testDescription1");
         tracker.add(previous);
         Item next = new Item("test2", "testDescription2");
@@ -34,7 +34,7 @@ public class TrackerTest {
 
     @Test
     public void whenDeleteNameThenTrackerHasAnotherItem() {
-        Tracker tracker = new Tracker();
+        MemTracker tracker = new MemTracker();
         Item item1 = new Item("test1", "testDescription1");
         Item item2 = new Item("test2", "testDescription2");
         Item item3 = new Item("test3", "testDescription3");
@@ -48,7 +48,7 @@ public class TrackerTest {
 
     @Test
     public void whenFindAllNameThenTrackerReturnAllName() {
-        Tracker tracker = new Tracker();
+        MemTracker tracker = new MemTracker();
         Item item1 = new Item("test1", "testDescription1");
         Item item2 = new Item("test2", "testDescription2");
         tracker.add(item1);
@@ -60,7 +60,7 @@ public class TrackerTest {
 
     @Test
     public void whenFindByNameThenTrackerReturnArrayItem() {
-        Tracker tracker = new Tracker();
+        MemTracker tracker = new MemTracker();
         Item item1 = new Item("test1", "testDescription1");
         Item item2 = new Item("test1", "testDescription2");
         Item item3 = new Item("test3", "testDescription3");
@@ -73,7 +73,7 @@ public class TrackerTest {
 
     @Test
     public void whenFindByIdThenTrackerReturnItem() {
-        Tracker tracker = new Tracker();
+        MemTracker tracker = new MemTracker();
         Item item1 = new Item("test1", "testDescription1");
         Item item2 = new Item("test2", "testDescription2");
         tracker.add(item1);

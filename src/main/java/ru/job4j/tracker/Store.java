@@ -7,7 +7,9 @@ import java.util.List;
  * @version $Id$
  * @since 0.1
  */
-public interface ITracker {
+public interface Store extends AutoCloseable {
+    void init();
+
     Item add(Item item);
 
     boolean replace(String id, Item item);

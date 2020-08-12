@@ -9,7 +9,7 @@ public interface UserAction {
 
     int key();
 
-    void execute(Input input, ITracker tracker);
+    void execute(Input input, Store tracker);
 
     String info();
 }
