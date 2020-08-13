@@ -37,6 +37,6 @@ public class StartUI {
     }
 
     public static void main(String[] args) {
-        new StartUI(new ValidateInput(new ConsoleInput()), new SqlTracker(), System.out::println).init();
+        new StartUI(new ValidateInput(new ConsoleInput()), new MemTracker(), System.out::println).init();
     }
 }

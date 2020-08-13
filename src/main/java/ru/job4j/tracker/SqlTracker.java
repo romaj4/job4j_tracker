@@ -99,14 +99,14 @@ public class SqlTracker implements Store {
      * @param item новая заявка.
      */
     @Override
-    public boolean replace(String id, Item item) {
+    public boolean replace(Integer id, Item item) {
         int rst = 0;
         try (PreparedStatement prst = this.connection.prepareStatement(
                 "update items set name = ?, description = ?, created = ? where id = ?;")) {
             prst.setString(1, item.getName());
             prst.setString(2, item.getDescription());
             prst.setLong(3, item.getCreate());
-            prst.setInt(4, Integer.parseInt(id));
+            prst.setInt(4, id);
             rst = prst.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -121,11 +121,11 @@ public class SqlTracker implements Store {
      * @return результат удаления.
      */
     @Override
-    public boolean delete(String id) {
+    public boolean delete(Integer id) {
         int rst = 0;
         try (PreparedStatement prst = this.connection.prepareStatement(
                 "delete from items where id = ?")) {
-            prst.setInt(1, Integer.parseInt(id));
+            prst.setInt(1, id);
             rst = prst.executeUpdate();
             System.out.println(rst);
         } catch (SQLException e) {
@@ -146,7 +146,7 @@ public class SqlTracker implements Store {
             ResultSet resultSet = st.executeQuery("select * from items");
             while (resultSet.next()) {
                 Item item = new Item(resultSet.getString("name"), resultSet.getString("description"));
-                item.setId(String.valueOf(resultSet.getInt("id")));
+                item.setId(resultSet.getInt("id"));
                 item.setCreate(resultSet.getLong("created"));
                 itemsList.add(item);
             }
@@ -171,7 +171,7 @@ public class SqlTracker implements Store {
             ResultSet resultSet = prst.executeQuery();
             while (resultSet.next()) {
                 Item item = new Item(resultSet.getString("name"), resultSet.getString("description"));
-                item.setId(String.valueOf(resultSet.getInt("id")));
+                item.setId(resultSet.getInt("id"));
                 item.setCreate(resultSet.getLong("created"));
                 itemsList.add(item);
             }
@@ -188,15 +188,15 @@ public class SqlTracker implements Store {
      * @return заявка.
      */
     @Override
-    public Item findById(String id) {
+    public Item findById(Integer id) {
         Item item = null;
         try (PreparedStatement prst = this.connection.prepareStatement(
                 "SELECT * FROM items WHERE id = ?")) {
-            prst.setInt(1, Integer.parseInt(id));
+            prst.setInt(1, id);
             ResultSet resultSet = prst.executeQuery();
             if (resultSet.next()) {
                 item = new Item(resultSet.getString("name"), resultSet.getString("description"));
-                item.setId(String.valueOf(resultSet.getInt("id")));
+                item.setId(resultSet.getInt("id"));
                 item.setCreate(resultSet.getLong("created"));
             }
         } catch (SQLException e) {

@@ -101,7 +101,7 @@ public class MenuTracker {
 
         @Override
         public void execute(Input input, Store tracker) {
-            String id = input.ask("Введите ID редактируемой заявки: ");
+            Integer id = Integer.parseInt(input.ask("Введите ID редактируемой заявки: "));
             String name = input.ask("Введите имя новой заявки :");
             String desc = input.ask("Введите описание новой заявки :");
             Item item = new Item(name, desc);
@@ -117,7 +117,7 @@ public class MenuTracker {
 
         @Override
         public void execute(Input input, Store tracker) {
-            String id = input.ask("Введите ID удаляемой заявки: ");
+            Integer id = Integer.parseInt(input.ask("Введите ID удаляемой заявки: "));
             tracker.delete(id);
         }
     }
@@ -130,7 +130,7 @@ public class MenuTracker {
 
         @Override
         public void execute(Input input, Store tracker) {
-            String id = input.ask("Введите ID заявки: ");
+            Integer id = Integer.parseInt(input.ask("Введите ID заявки: "));
             Item item = tracker.findById(id);
             output.accept(String.format("Name: %s, description: %s, id: %s",
                     item.getName(), item.getDescription(), item.getId()));

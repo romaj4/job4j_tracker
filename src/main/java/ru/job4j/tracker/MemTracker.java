@@ -38,8 +38,8 @@ public class MemTracker implements Store {
      *
      * @return Уникальный ключ.
      */
-    private String generateId() {
-        return String.valueOf(System.currentTimeMillis() + new Random().nextInt(10000));
+    private Integer generateId() {
+        return new Random().nextInt(1000000);
     }
 
     /**
@@ -48,7 +48,7 @@ public class MemTracker implements Store {
      * @param id   уникальный ключ.
      * @param item новая заявка.
      */
-    public boolean replace(String id, Item item) {
+    public boolean replace(Integer id, Item item) {
         boolean result = false;
         int position = this.findPositionById(id);
         if (position != -1) {
@@ -64,7 +64,7 @@ public class MemTracker implements Store {
      *
      * @param id уникальный ключ.
      */
-    public boolean delete(String id) {
+    public boolean delete(Integer id) {
         boolean result = false;
         int position = this.findPositionById(id);
         if (position != -1) {
@@ -99,7 +99,7 @@ public class MemTracker implements Store {
      * @param id уникальный ключ.
      * @return заявка.
      */
-    public Item findById(String id) {
+    public Item findById(Integer id) {
         return this.items.stream().filter(item -> item.getId() == id).findAny().orElse(null);
     }
 
@@ -109,7 +109,7 @@ public class MemTracker implements Store {
      * @param id уникальный ключ.
      * @return позиция заявки.
      */
-    public int findPositionById(String id) {
+    public int findPositionById(Integer id) {
         int result = -1;
         for (int i = 0; i < items.size(); i++) {
             if (items.get(i) != null && items.get(i).getId().equals(id)) {

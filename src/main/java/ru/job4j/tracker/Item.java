@@ -2,7 +2,7 @@ package ru.job4j.tracker;
 
 public class Item {
 
-    private String id;
+    private Integer id;
 
     public String name;
 
@@ -28,11 +28,11 @@ public class Item {
         return this.create;
     }
 
-    public String getId() {
+    public Integer getId() {
         return this.id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

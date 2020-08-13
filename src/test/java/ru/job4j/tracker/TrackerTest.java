@@ -29,7 +29,7 @@ public class TrackerTest {
         next.setId(previous.getId());
         tracker.replace(previous.getId(), next);
         assertThat(tracker.findById(previous.getId()).getName(), is("test2"));
-        assertThat(tracker.replace("111", next), is(false));
+        assertThat(tracker.replace(111, next), is(false));
     }
 
     @Test
@@ -43,7 +43,7 @@ public class TrackerTest {
         tracker.add(item3);
         tracker.delete(item2.getId());
         assertThat(tracker.findAll().get(1), is(item3));
-        assertThat(tracker.delete("111"), is(false));
+        assertThat(tracker.delete(111), is(false));
     }
 
     @Test
